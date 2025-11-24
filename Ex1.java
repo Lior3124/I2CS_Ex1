@@ -92,9 +92,11 @@ public class Ex1 {
 		String ans = "";
 		if(poly.length==0) {ans="0";}
 		else {
-            /** add you code below
-
-             /////////////////// */
+            /** add you code below*/
+             for(int i=0;i<poly.length;i++){
+                System.out.print(poly[i]+"x"+(poly.length-i));
+             }
+             ///////////////////
 		}
 		return ans;
 	}
