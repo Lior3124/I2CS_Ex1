@@ -63,8 +63,7 @@ public class Ex1 {
 		int ly = yy.length;
 		if(xx!=null && yy!=null && lx==ly && lx>1 && lx<4) {
 		/** add you code below
-
-		/////////////////// */
+		///////////////////*/
 		}
 		return ans;
 	}
@@ -72,13 +71,25 @@ public class Ex1 {
 	 * where n is the max degree (over p1, p2) - up to an epsilon (aka EPS) value.
 	 * @param p1 first polynomial function
 	 * @param p2 second polynomial function
-	 * @return true iff p1 represents the same polynomial function as p2.
+	 * @return true if p1 represents the same polynomial function as p2.
 	 */
 	public static boolean equals(double[] p1, double[] p2) {
 		boolean ans = true;
-        /** add you code below
+        /** add you code below*/
 
-         /////////////////// */
+        int max = Math.max(p1.length, p2.length);
+        max = max+1;
+
+        double check= Math.random()*(-10);
+        while(max != 0) {
+            if(Math.abs(f(p1,check) - f(p2,check))>EPS) {
+                return false;
+            }
+            double random = Math.random()*10;
+            max = max-1;
+            check = check+random;
+        }
+        ///////////////////
 		return ans;
 	}
 
