@@ -106,7 +106,13 @@ public class Ex1 {
             /** add you code below*/
              for(int i=0;i<poly.length;i++){
                  if(poly[poly.length-i-1] != 0) {
-                     if(i==0){
+                     if(poly.length-i-1==1){
+                         if(i != 0 && poly[poly.length-i-1]>0){
+                             ans = ans + ("+");
+                         }
+                         ans = ans + (poly[poly.length-i-1] + "x ");
+                     }
+                     else if(i==0){
                          ans = ans + (poly[poly.length-i-1] + "x^" + (poly.length-i-1) + " ");
                      }
                      else if(poly.length-i-1 == 0) {
@@ -208,7 +214,7 @@ public class Ex1 {
 	 * getPolynomFromString(poly(p)) should return an array equals to p.
 	 * 
 	 * @param p - a String representing polynomial function.
-	 * @return
+	 * @return an array of doubles representing the polynomial function of the string
 	 */
 	public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
