@@ -45,6 +45,31 @@ class Ex1Test {
     }
 
 
+    @Test
+    /**
+     * Tests the length of a function between two points
+     */
+    void testlength() {
+
+        double expected_one = 5*Math.sqrt(5);   // calculated beforehand with an integral
+        double actual_one = Ex1.length(po1,0,5,1000);
+
+        double expected_two = 9.612996805059;   // calculated beforehand with an integral
+        double actual_two = Ex1.length(po2,5,0,1000);
+
+        double expected_three = 7.29263;    // calculated beforehand with an integral
+        double actual_three = Ex1.length(po3,2,-2,1000);
+
+        double expected_four = 19.7253393796548;    // calculated beforehand with an integral
+        double actual_four = Ex1.length(po4,-7,5,100000);
+
+        assertEquals(expected_one,actual_one,Ex1.EPS);
+        assertEquals(expected_two,actual_two,Ex1.EPS);
+        assertEquals(expected_three,actual_three,Ex1.EPS);
+        assertEquals(expected_four,actual_four,Ex1.EPS);
+    }
+
+
  	@Test
 	/**
 	 * Tests that f(x) == poly(x).
