@@ -19,7 +19,32 @@ class Ex1Test {
 	static double[] po1 = {2,2}, po2 = {-3, 0.61, 0.2};;
 	static double[] po3 = {2,1,-0.7, -0.02,0.02};
 	static double[] po4 = {-3, 0.61, 0.2};
-	
+
+    @Test
+    /**
+     * Tests the conversion of arr representing a polynom to string
+     * For example the array {2,0,3.1,-1.2} will be presented as the following String  "-1.2x^3 +3.1x^2 +2.0"
+     */
+    void testPoly() {
+        String expected_one = "2.0x^1 +2.0";
+        String actual_one = Ex1.poly(po1);
+
+        String expected_two = "0.2x^2 +0.61x^1 -3.0";
+        String actual_two = Ex1.poly(po2);
+
+        String expected_three = "0.02x^4 -0.02x^3 -0.7x^2 +1.0x^1 +2.0";
+        String actual_three = Ex1.poly(po3);
+
+        String expected_four = "0.2x^2 +0.61x^1 -3.0";
+        String actual_four = Ex1.poly(po4);
+
+        assertEquals(expected_one, actual_one,"You have a problem with poly func");
+        assertEquals(expected_two, actual_two,"You have a problem with poly func");
+        assertEquals(expected_three, actual_three,"You have a problem with poly func");
+        assertEquals(expected_four, actual_four,"You have a problem with poly func");
+    }
+
+
  	@Test
 	/**
 	 * Tests that f(x) == poly(x).

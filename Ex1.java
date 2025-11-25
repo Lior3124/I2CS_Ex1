@@ -105,7 +105,22 @@ public class Ex1 {
 		else {
             /** add you code below*/
              for(int i=0;i<poly.length;i++){
-                System.out.print(poly[i]+"x"+(poly.length-i));
+                 if(poly[poly.length-i-1] != 0) {
+                     if(i==0){
+                         ans = ans + (poly[poly.length-i-1] + "x^" + (poly.length-i-1) + " ");
+                     }
+                     else if(poly.length-i-1 == 0) {
+                         if(poly[poly.length-i-1]>0){
+                             ans = ans + ("+");
+                         }
+                         ans = ans +(poly[poly.length-i-1]);
+                     } else{
+                         if(poly[poly.length-i-1]>0){
+                             ans = ans + ("+");
+                         }
+                         ans = ans + (poly[poly.length-i-1] + "x^" + (poly.length-i-1) + " ");
+                     }
+                 }
              }
              ///////////////////
 		}
