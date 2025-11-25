@@ -218,9 +218,24 @@ public class Ex1 {
 	 */
 	public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
-        /** add you code below
-
-         /////////////////// */
+        /** add you code below*/
+         p = p.replace("x","");
+         p = p.replace("+","");
+         String[] func = p.split(" ");
+         for(int i=0;i<func.length;i++){
+            int num = func[i].indexOf('^');
+            if(num != -1){
+               func[i]=(func[i].substring(0,num));
+            }else{
+                func[i] = func[i];
+            }
+         }
+         double[] new_ans = new double[func.length];
+         for(int i=0;i<func.length;i++){
+             new_ans[func.length-i-1]= Double.parseDouble(func[i]);
+         }
+         ans = new_ans;
+         ///////////////////
 		return ans;
 	}
 	/**
