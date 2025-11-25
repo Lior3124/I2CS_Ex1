@@ -122,21 +122,23 @@ public class Ex1 {
 	 * @return an x value (x1<=x<=x2) for which |p1(x) - p2(x)| < eps.
 	 */
 	public static double sameValue(double[] p1, double[] p2, double x1, double x2, double eps) {
-		//double ans = x1;
+		double ans = x1;
         /** add you code below*/
-        double x = (x1+x2)/2;
-        double fx1 = f(p1,x);
-        double fx2 = f(p2,x);
-        if(Math.abs(fx1 -fx2)<eps) {
-            return x;
+        boolean found = false;
+        double x = (x1 + x2) / 2;
+        double fx1 = f(p1, x);
+        double fx2 = f(p2, x);
+        if (Math.abs(fx1 - fx2) < eps) {
+            ans = x;
+            found = true;
         }
-        if((fx1 -fx2)*(f(p1,x1)-f(p2,x1))>0){
+        else if ((fx1 - fx2) * (f(p1, x1) - f(p2, x1)) > 0) {
             return sameValue(p1, p2, x, x2, eps);
-        }else{
+        } else {
             return sameValue(p1, p2, x1, x, eps);
         }
          ///////////////////
-		//return ans;
+		return ans;
 	}
 	/**
 	 * Given a polynomial function (p), a range [x1,x2] and an integer with the number (n) of sample points.
