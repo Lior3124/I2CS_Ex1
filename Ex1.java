@@ -154,9 +154,18 @@ public class Ex1 {
 	 */
 	public static double length(double[] p, double x1, double x2, int numberOfSegments) {
 		double ans = x1;
-        /** add you code below
-
-         /////////////////// */
+        /** add you code below*/
+        double space = (x2-x1)/numberOfSegments;
+        int count =0;
+        double len =0;
+        while(count != numberOfSegments) {
+            double f1 = f(p,x1+space*count);
+            double f_len = f(p,x1+space*(count+1));
+            len += Math.sqrt(Math.pow(f_len-f1,2)+Math.pow(space,2));
+            count++;
+        }
+        ans = len;
+         ///////////////////
 		return ans;
 	}
 	
