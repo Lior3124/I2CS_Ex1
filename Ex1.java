@@ -235,8 +235,37 @@ public class Ex1 {
 	 */
 	public static double area(double[] p1,double[]p2, double x1, double x2, int numberOfTrapezoid) {
 		double ans = 0;
-        /** add you code below
+        /** add you code below*/
+        double space = Math.abs(x2-x1)/numberOfTrapezoid;
+        int count =0;
+        double sum =0;
+        while(count != numberOfTrapezoid) {
+            double funcOne_1 = f(p1, x1);
+            double funcOne_2 = f(p1, x1 + space);
+            double funcTwo_1 = f(p2, x1);
+            double funcTwo_2 = f(p2, x1 + space);
+            double base_one = (funcOne_1 - funcTwo_1);
+            double base_two = (funcOne_2 - funcTwo_2);
+            if (base_one * base_two < 0) {
+                base_one = Math.abs(base_one);
+                base_two = Math.abs(base_two);
+                double intersection = sameValue(p1, p2, x1, x1+space, EPS);
+                intersection = Math.abs(intersection);
+                double triangel_one = (base_one*Math.abs(x1-intersection))/2;
+                double triangel_two = (base_two*Math.abs(x1+space-intersection))/2;
+                sum += triangel_one + triangel_two;
+                count++;
+                x1= x1+space;
+            } else {
+                base_one = Math.abs(base_one);
+                base_two = Math.abs(base_two);
+                sum += ((base_two + base_one) * space) / 2;
 
+                count++;
+                x1 = x1 + space;
+            }
+        }
+        ans = sum;
          /////////////////// */
 		return ans;
 	}
