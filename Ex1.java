@@ -280,8 +280,35 @@ public class Ex1 {
 	 */
 	public static double[] add(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
-        /** add you code below
-
+        /** add you code below*/
+        if(p1.length !=0 && p2.length !=0) {
+            double[] answer;
+            if(p1.length == p2.length) {
+                answer  = new double[p1.length];
+                for(int i=0;i<answer.length;i++) {
+                    answer[i] = p1[i] + p2[i];
+                }
+            }
+            else if(p1.length > p2.length) {
+                answer  = new double[p1.length];
+                for(int i=0;i<p2.length;i++) {
+                    answer[i] = p1[i] + p2[i];
+                }
+                for(int i=p2.length;i<p1.length;i++) {
+                    answer[i] = p1[i];
+                }
+            }
+            else{
+                answer  = new double[p2.length];
+                for(int i=0;i<p1.length;i++) {
+                    answer[i] = p1[i] + p2[i];
+                }
+                for(int i=p1.length;i<p2.length;i++) {
+                    answer[i] = p2[i];
+                }
+            }
+            ans = answer;
+        }
          /////////////////// */
 		return ans;
 	}
