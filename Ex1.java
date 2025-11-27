@@ -101,30 +101,33 @@ public class Ex1 {
 	 */
 	public static String poly(double[] poly) {
 		String ans = "";
-		if(poly.length==0) {ans="0";}
+        int count = poly.length-1;
+		if(poly.length==0) {
+            ans="0";
+        }
 		else {
             /** add you code below*/
              for(int i=0;i<poly.length;i++){
-                 if(poly[poly.length-i-1] != 0) {
-                     if(poly.length-i-1==1){
-                         if(i != 0 && poly[poly.length-i-1]>0){
+                 if(poly[count-i] != 0) {
+                     if(count-i==1){
+                         if(i != 0 && poly[count-i]>0){
                              ans = ans + ("+");
                          }
-                         ans = ans + (poly[poly.length-i-1] + "x ");
+                         ans = ans + (poly[count-i] + "x ");
                      }
                      else if(i==0){
-                         ans = ans + (poly[poly.length-i-1] + "x^" + (poly.length-i-1) + " ");
+                         ans = ans + (poly[count-i] + "x^" + (count-i) + " ");
                      }
-                     else if(poly.length-i-1 == 0) {
-                         if(poly[poly.length-i-1]>0){
+                     else if(count-i == 0) {
+                         if(poly[count-i]>0){
                              ans = ans + ("+");
                          }
-                         ans = ans +(poly[poly.length-i-1]);
+                         ans = ans +(poly[count-i]);
                      } else{
                          if(poly[poly.length-i-1]>0){
                              ans = ans + ("+");
                          }
-                         ans = ans + (poly[poly.length-i-1] + "x^" + (poly.length-i-1) + " ");
+                         ans = ans + (poly[count-i] + "x^" + (count-i) + " ");
                      }
                  }
              }
