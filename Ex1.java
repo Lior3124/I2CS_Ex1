@@ -250,7 +250,6 @@ public class Ex1 {
                 base_one = Math.abs(base_one);
                 base_two = Math.abs(base_two);
                 double intersection = sameValue(p1, p2, x1, x1+space, EPS);
-                intersection = Math.abs(intersection);
                 double triangel_one = (base_one*Math.abs(x1-intersection))/2;
                 double triangel_two = (base_two*Math.abs(x1+space-intersection))/2;
                 sum += triangel_one + triangel_two;

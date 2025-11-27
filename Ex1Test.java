@@ -22,6 +22,26 @@ class Ex1Test {
 
     @Test
     /**
+     * Tests the roots of a few polynomials
+     */
+    void testRoot_rec(){
+        double expected_one = 3.19582;
+        double actual_one = Ex1.root_rec(P1,2,4,Ex1.EPS);
+
+        double expected_two = -1.0;
+        double actual_two = Ex1.root_rec(po1,-2,4,Ex1.EPS);
+
+        double expected_three = -5.68741;
+        double actual_three = Ex1.root_rec(po2,-8,0,Ex1.EPS);
+
+        assertEquals(expected_one,actual_one,Ex1.EPS);
+        assertEquals(expected_two,actual_two,Ex1.EPS);
+        assertEquals(expected_three,actual_three,Ex1.EPS);
+    }
+
+
+    @Test
+    /**
      * Tests the conversion of arr representing a polynom to string
      * For example the array {2,0,3.1,-1.2} will be presented as the following String  "-1.2x^3 +3.1x^2 +2.0"
      */
