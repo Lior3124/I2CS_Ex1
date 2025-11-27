@@ -20,7 +20,7 @@ public class Ex1 {
 	/**
 	 * Computes the f(x) value of the polynomial function at x.
 	 * @param poly - polynomial function
-	 * @param x
+	 * @param x - x value of a point
 	 * @return f(x) - the polynomial function value at x.
 	 */
 	public static double f(double[] poly, double x) {
@@ -246,7 +246,7 @@ public class Ex1 {
 	 * getPolynomFromString(poly(p)) should return an array equals to p.
 	 * 
 	 * @param p - a String representing polynomial function.
-	 * @return an array of doubles representing the polynomial function of the string
+	 * @return - an array of doubles representing the polynomial function of the string
 	 */
 	public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
@@ -274,9 +274,9 @@ public class Ex1 {
 	}
 	/**
 	 * This function computes the polynomial function which is the sum of two polynomial functions (p1,p2)
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * @param p1 - an array of doubles representing a polynomial
+	 * @param p2 - an array of doubles representing a polynomial
+	 * @return - an array of doubles representing the sum of the two polynomials given
 	 */
 	public static double[] add(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
@@ -314,9 +314,9 @@ public class Ex1 {
 	}
 	/**
 	 * This function computes the polynomial function which is the multiplication of two polynoms (p1,p2)
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * @param p1 - an array of doubles representing a polynomial
+	 * @param p2 - an array of doubles representing a polynomial
+	 * @return - an array of doubles representing the multiplication of two polynoms
 	 */
 	public static double[] mul(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
