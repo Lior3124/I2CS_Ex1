@@ -53,8 +53,8 @@ public class Ex1 {
 	 * This function computes a polynomial representation from a set of 2D points on the polynom.
 	 * The solution is based on: //	http://stackoverflow.com/questions/717762/how-to-calculate-the-vertex-of-a-parabola-given-three-points
 	 * Note: this function only works for a set of points containing up to 3 points, else returns null.
-	 * @param xx
-	 * @param yy
+	 * @param xx - an array of doubles representing the x values of the points
+	 * @param yy -an array of doubles representing the y values of the points
 	 * @return an array of doubles representing the coefficients of the polynom.
 	 */
 	public static double[] PolynomFromPoints(double[] xx, double[] yy) {
@@ -62,7 +62,35 @@ public class Ex1 {
 		int lx = xx.length;
 		int ly = yy.length;
 		if(xx!=null && yy!=null && lx==ly && lx>1 && lx<4) {
-		/** add you code below
+            /** add you code below*/
+            double A =0.0;
+            double B = 0.0;
+            double C = 0.0;
+            if(lx == 2){
+                A =0.0;
+                B = (xx[0]-xx[1])/(yy[0]-yy[1]);
+                C = yy[0]-B*xx[0];
+            }else {
+                double x1 = xx[0], x2 = xx[1], x3 = xx[2];
+                double y1 = yy[0], y2 = yy[1], y3 = yy[2];
+
+                double denom = (x1 - x2) * (x1 - x3) * (x2 - x3);
+
+                if (Math.abs(denom) > Math.pow(10, 12) || Math.abs(denom) < Math.pow(10, -8)) {
+                    A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2));
+                    B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3));
+                    C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3);
+                    ans = new double[]{C ,B};
+                } else {
+                    A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom;
+                    B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3)) / denom;
+                    C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom;
+                    ans = new double[]{C ,B ,A};
+                }
+                if(A<EPS){
+                    ans = new double[]{C ,B};
+                }
+            }
 		///////////////////*/
 		}
 		return ans;

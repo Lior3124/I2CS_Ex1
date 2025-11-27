@@ -43,6 +43,26 @@ class Ex1Test {
         assertEquals(expected_three, actual_three,"You have a problem with poly func");
         assertEquals(expected_four, actual_four,"You have a problem with poly func");
     }
+    @Test
+    /**
+     * Tests The convertion and calculation of 3 or 2 point into a polynom
+     */
+    void testPolynomFromPoints(){
+        double [] x_values = {1.2,-15,7};
+        double [] y_values = {Ex1.f(po1,1.2),Ex1.f(po1,-15),Ex1.f(po1,7)};
+        double [] actual_one = Ex1.PolynomFromPoints(x_values,y_values);
+        assertEquals(po1.length,actual_one.length);
+        for(int i=0;i<po1.length;i++){
+            assertEquals(po1[i],actual_one[i],Ex1.EPS);
+        }
+
+        double [] y_values_two = {Ex1.f(po2,1.2),Ex1.f(po2,-15),Ex1.f(po2,7)};
+        double [] actual_two = Ex1.PolynomFromPoints(x_values,y_values_two);
+        assertEquals(po2.length,actual_two.length);
+        for(int i=0;i<po2.length;i++){
+            assertEquals(po2[i],actual_two[i],Ex1.EPS);
+        }
+    }
 
 
     @Test
