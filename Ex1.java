@@ -281,7 +281,7 @@ public class Ex1 {
 	public static double[] add(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
         /** add you code below*/
-        if(p1.length !=0 && p2.length !=0) {
+        if(p1.length !=0 || p2.length !=0) {
             double[] answer;
             if(p1.length == p2.length) {
                 answer  = new double[p1.length];
@@ -316,12 +316,26 @@ public class Ex1 {
 	 * This function computes the polynomial function which is the multiplication of two polynoms (p1,p2)
 	 * @param p1 - an array of doubles representing a polynomial
 	 * @param p2 - an array of doubles representing a polynomial
-	 * @return - an array of doubles representing the multiplication of two polynoms
+	 * @return - an array of doubles representing the multiplication of two polynomials
 	 */
 	public static double[] mul(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
-        /** add you code below
-
+        /** add you code below*/
+        if(p1.length !=0 && p2.length !=0) {
+            int sum_len = p1.length+p2.length;
+            double []  answer;
+            if(p1.length<3 || p2.length<3) {
+                answer  = new double[sum_len-1];
+            }else {
+                answer = new double[sum_len - 2];
+            }
+            for(int i=0;i<p1.length;i++) {
+                for(int j=0;j<p2.length;j++) {
+                    answer[i+j] += p1[i]*p2[j];
+                }
+            }
+            ans = answer;
+        }
          /////////////////// */
 		return ans;
 	}
