@@ -300,13 +300,19 @@ public class Ex1 {
 	}
 	/**
 	 * This function computes the derivative of the p0 polynomial function.
-	 * @param po
-	 * @return
+	 * @param po - an array of doubles representing a polynomial function
+	 * @return ans - an array of doubles representing teh derivative of the polynomial function
 	 */
 	public static double[] derivative (double[] po) {
 		double [] ans = ZERO;//
         /** add you code below*/
-
+        if(po.length >1){
+            double[] answer = new double[po.length-1];
+            for(int i=1;i<po.length;i++){
+                answer[i-1] = po[i]*i;
+            }
+            ans = answer;
+        }
 
          /////////////////// */
 		return ans;
