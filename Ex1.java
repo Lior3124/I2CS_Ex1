@@ -131,13 +131,29 @@ public class Ex1 {
 	 * @param p1 first polynomial function
 	 * @param p2 second polynomial function
 	 * @return true if p1 represents the same polynomial function as p2.
+     *
+     * The function take two double arrays and checks for n+1 values of x if both the polynomials represented by the arrays are equal(they have to be equal in all the x values)
+     * The function randomizes the x values to make sure there isn't a coincidence
+     *
+     * ====pseudocode====
+     * 1. input                                                         //the function take as an input two doubles arrays, each one of them representing a polynomial
+     * 2.boolean ans = true                                             //boolean equals true
+     * 3. if(p1.length !=0 && p2.length != 0)                           //if the array aren't empty
+     * 4.   int max = Math.max(p1.length, p2.length);                   //max equals the length of the array with the higher length (if they are equal they are most likely to be of the same length, but just to make sure because there can be a really small number)
+     * 5.   double check = Math.random() * (-10);                       //check equals a random number between 0 and -10
+     * 6.   while (max != 0)                                            //while max isn't equal to zero
+     * 7.       if (Math.abs(f(p1, check) - f(p2, check)) > EPS)        //if the absolute value of the polynomials is bigger than EPS
+     * 8.           return false;                                       //return false
+     * 9.       double random = Math.random() * 10;                     // random equals a number between 0 and 10
+     * 10.      max = max - 1;                                          // decrease the value of max by 1
+     * 11.      check = check + random;                                 // increment check by random
+     * 12. return ans                                                   //return ans
 	 */
 	public static boolean equals(double[] p1, double[] p2) {
 		boolean ans = true;
         /** add you code below*/
         if(p1.length !=0 && p2.length != 0) {
             int max = Math.max(p1.length, p2.length);
-            max = max;
 
             double check = Math.random() * (-10);
             while (max != 0) {
