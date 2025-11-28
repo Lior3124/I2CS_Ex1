@@ -174,6 +174,15 @@ class Ex1Test {
 	}
 
 
+    @Test
+    /**
+     * Test that 0+0 = 0
+     */
+    void testAdd4() {
+        double[] actual = Ex1.add(Ex1.ZERO, Ex1.ZERO);
+        assertArrayEquals(Ex1.ZERO,actual);
+    }
+
 	@Test
 	/**
 	 * Tests that p1*0 == 0
@@ -227,6 +236,32 @@ class Ex1Test {
 		assertTrue(Ex1.equals(Ex1.ZERO, dp3));
 		assertTrue(Ex1.equals(dp4, dp3));
 	}
+
+
+    @Test
+    /**
+     * Test derivative if the polynomial has a max degree of 0 or 1
+     */
+    public void testDerivaitive2(){
+        double [] actual_one = Ex1.derivative(Ex1.ZERO);
+
+        double[] test = {1.0};
+        double [] actual_two = Ex1.derivative(test);
+
+        assertArrayEquals(Ex1.ZERO, actual_one);
+        assertArrayEquals(Ex1.ZERO, actual_two);
+    }
+
+
+    @Test
+    /**
+     * Tests the derivative of polynomial that has a max degree of 2
+     */
+    public void testDerivaitive3(){
+        double [] actual = Ex1.derivative(po1);
+        double[] expected = {2.0};
+        assertArrayEquals(expected, actual);
+    }
 
 
 	@Test
