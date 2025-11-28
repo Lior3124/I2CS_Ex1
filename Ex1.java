@@ -252,21 +252,41 @@ public class Ex1 {
 	 * @param x2 - maximal value of the range
 	 * @param eps - epsilon (positive small value (often 10^-3, or 10^-6).
 	 * @return an x value (x1<=x<=x2) for which |p1(x) - p2(x)| < eps.
+     *
+     * The function is given two double array representing polynomial functions and a two x values representing a range and
+     * an eps value that determines when it is close enough.The function return the x value for which the two polynomial functions have an
+     * intersection point
+     *
+     * ====pseudocode====
+     * 1.input                                                                          //the function takes as an input two double arrays and three doubles
+     * 2.double ans = x1;                                                               // ans equals x1
+     * 3.double base_one = (f(p1, x1) - f(p2, x1));                                     // base_one equals the values of p1 at x2 minus the value of p2 at x2
+     * 4.double base_two = (f(p1, x2) - f(p2, x2));                                     // base_two equals the values of p1 at x2 minus the value of p2 at x2
+     * 5.if(base_one * base_two < 0)                                                    // if base_one multiplied by base_two is negative
+     * 7.   x = (x1 + x2) / 2;                                                          // x is equals the value between x1 and x2(average)
+     * 8.   fx1 = f(p1, x);                                                             // fx1 is the value of p1 at x
+     * 9.   fx2 = f(p2, x);                                                             //fx2 is the value of p2 at x
+     * 10.  if (|(fx1 - fx2)| < eps)                                                    // if the absolute value of fx1 minus fx2 is lower than eps
+     * 11.      ans = x                                                                 // ans equals x
+     * 13.  else if ((fx1 - fx2) * (f(p1, x1) - f(p2, x1)) > 0)                         //else if (fx1 minus fx2) multiplied (by the value of p1 at x1 minus the value of p2 at x1)
+     * 14.      return sameValue(p1, p2, x, x2, eps)                                    // call this function again but instead of x1 give x
+     * 15.  else                                                                        //else
+     * 16.      return sameValue(p1, p2, x1, x, eps)                                    // call this function again but instead of x2 give x
+     * 17.else                                                                          //else
+     * 18.  throw Exception("the polynomials don't have an intersection point")         //throw an exception error
+     * 19.return ans                                                                    /return ans
 	 */
 	public static double sameValue(double[] p1, double[] p2, double x1, double x2, double eps) {
 		double ans = x1;
         /** add you code below*/
-
         double base_one = (f(p1, x1) - f(p2, x1));
         double base_two = (f(p1, x2) - f(p2, x2));
         if(base_one * base_two < 0) {
-            boolean found = false;
             double x = (x1 + x2) / 2;
             double fx1 = f(p1, x);
             double fx2 = f(p2, x);
             if (Math.abs(fx1 - fx2) < eps) {
                 ans = x;
-                found = true;
             } else if ((fx1 - fx2) * (f(p1, x1) - f(p2, x1)) > 0) {
                 return sameValue(p1, p2, x, x2, eps);
             } else {
