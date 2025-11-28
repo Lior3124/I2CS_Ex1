@@ -357,6 +357,42 @@ public class Ex1 {
 	 * @param x2 - maximal value of the range
 	 * @param numberOfTrapezoid - a natural number representing the number of Trapezoids between x1 and x2.
 	 * @return the approximated area between the two polynomial functions within the [x1,x2] range.
+     *
+     * The function is given two arrays of double that represent polynomial functions, two doubles that represent x values and one int that represents the number trapezoids.
+     * Then the function splits the range of the x values to the number of trapezoids given and calculates each area and sums it's all to get the total area between the two functnion within the given range
+     * There is a special case that the polynomials have an intersection point and then we need to calculate triangels instead of trapezoids
+     * The function return the area between the polynomials in the given range
+     *
+     * ====pseudocode====
+     * 1.input                                                                          // The function gets as an input two arrays of doubles, two doubles and one integer
+     * 2.ans = 0;                                                                       // ans equals zero
+     * 3.space = Math.abs(x2-x1)/numberOfTrapezoid;                                     // space equals |x2-x1| divided by the number of trapezoids
+     * 4.count =0;                                                                      // count equals zero
+     * 5.sum =0;                                                                        // sum equals zero
+     * 6.   while(count != numberOfTrapezoid)                                           // loop while count isn't equal number of trapezoids
+     * 7.      funcOne_1 = f(p1, x1);                                                   // funcOne_1 is equal the value of p1 at x1
+     * 8.      funcOne_2 = f(p1, x1 + space);                                           // funcOne_2 is equal the value of p1 at x2
+     * 9.      funcTwo_1 = f(p2, x1);                                                   // funcTwo_1 is equal the value of p2 at x1
+     * 10.     funcTwo_2 = f(p2, x1 + space);                                           // funcTwo_2 is equal the value of p2 at x2
+     * 11.     base_one = (funcOne_1 - funcTwo_1);                                      // base_one is equal funcOne_1 minus funcTwo_1
+     * 12.     base_two = (funcOne_2 - funcTwo_2);                                      // base_two is equal funcOne_2 minus funcTwo_2
+     * 13.         if (base_one * base_two < 0)                                         // if base_one multiplied by base_two is negative( can be said as if the polynomials have an intersection point)
+     * 14.            base_one = Math.abs(base_one);                                    // base_one equals |base_one|
+     * 15.            base_two = Math.abs(base_two);                                    // base_two equals |base_two|
+     * 16.            intersection = sameValue(p1, p2, x1, x1+space, EPS);              // intersection is equal to sameValue(p1,p2,x1,x1+space,EPS) - sameValue find where in the range x1, x1+range p1 and p2 have an intersection point
+     * 17.            triangel_one = (base_one*Math.abs(x1-intersection))/2;            // triangle_ one is equal to base_one multiplied by |x1 minus intersection| all this divided by 2
+     * 18.            triangel_two = (base_two*Math.abs(x1+space-intersection))/2;      // triangle_ two is equal to base_two multiplied by |x1 plus space minus intersection| all this divided by 2
+     * 19.            sum += triangel_one + triangel_two;                               // sum is incremented by triangle_one + triangle_two
+     * 20.            count++;                                                          // count is incremented by 1
+     * 21.            x1= x1+space;                                                     // x1 is incremented by space
+     * 22.          else                                                                // else (the polynomials don't have an intersection point whiting the range x1 , x1+space)
+     * 23.             base_one = Math.abs(base_one);                                   // base_one equals |base_one|
+     * 24.             base_two = Math.abs(base_two);                                   // base_two equals |base_two|
+     * 25.             sum += ((base_two + base_one) * space) / 2;                      // sum is incremented by the area of the trapezoid, ((base_two+base_one)*space)/2
+     * 26.             count++;                                                         // count is incremented by 1
+     * 27.             x1 = x1 + space                                                  // x1 in incremented by space
+     * 28.      ans = sum;                                                              // ans equals sum
+     * 29.return ans                                                                    // return ans
 	 */
 	public static double area(double[] p1,double[]p2, double x1, double x2, int numberOfTrapezoid) {
 		double ans = 0;
