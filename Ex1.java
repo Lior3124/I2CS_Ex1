@@ -84,7 +84,7 @@ public class Ex1 {
      * 16.       A = x3(y2 - y1) + x2(y1 - y3) + x1 (y3 - y2)/denom         // A equals calculations based on the link given above
      * 17.       B = x3^2(y1 - y2) + x2^2(y3 - y1) + x1^2(y2 - y3)/denom    // B equals calculations based on the link given above
      * 18.       C = x2x3(x2-x3)y1 + x3x1(x3-x1)y2 + x1x2(x1-x2)y3/denom    // C equals calculations based on the link given above
-     * 19.       if(A<EPS && B<EPS)                                         // if A and B are really small
+     * 19.       if(A<EPS && B<EPS)                                        // if A and B are really small
      * 20.          ans = new double[]{C};                                  // ans equals an array of doubles containing C
      * 21.       else if(A<EPS)                                             // if A is really small
      * 22.          ans = new double[]{C,B};                                // ans equals an array of doubles containing C,B
