@@ -311,6 +311,23 @@ public class Ex1 {
 	 * @param x2 - maximal value of the range
 	 * @param numberOfSegments - (A positive integer value (1,2,...).
 	 * @return the length approximation of the function between f(x1) and f(x2).
+     *
+     * The function gets an array of doubles representing a polynomial, two doubles representing x values and an integer representing the number of segment that the length will be divided into.
+     * The function return the length of the polynomial within the given x values
+     *
+     * ====pseudocode====
+     * 1.input                                                                  // the functin takes an input of one array of doubls 2, 2 doubles and one integer
+     * 2.ans = x1;                                                              // ans equals x1
+     * 3.space = (x2-x1)/numberOfSegments;                                      // space equals x2 minus x1 all divided by the number of segments
+     * 4.count =0;                                                              //count equals zero
+     * 5.len =0;                                                                // len equals zero
+     * 6.while(count != numberOfSegments)                                       // while count isn't equal to the nubmer of segments loop
+     * 7.     f1 = f(p,x1+space*count)                                          // f1 is equal to the value of p at x= x1 + space* count
+     * 8.     f_len = f(p,x1+space*(count+1))                                   //f_len equals to the value of p at x= x1x1 + space* (count+1)
+     * 9.     len += Math.sqrt(Math.pow(f_len-f1,2)+Math.pow(space,2))          // len is incremented by the square root of f_len^2 + space^2
+     * 10.    count++                                                           //count is incremented by 1
+     * 11.ans = len                                                             // ans equals len
+     * 12.return ans                                                            //return ans
 	 */
 	public static double length(double[] p, double x1, double x2, int numberOfSegments) {
 		double ans = x1;
