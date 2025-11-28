@@ -45,3 +45,9 @@ __10. add -__ computes the polynomial which is the sum of two polynomials
 __11. mul -__omputes the polynomial which is the multipication of two polynomials
 
 __12. derivative -__ computes the derivative of a polynomial fucntion
+
+## ***Result***
+This is the gui after all the functions have been written and completed
+
+![result](ScreenShot_result.png)
+
