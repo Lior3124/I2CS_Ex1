@@ -73,17 +73,24 @@ class Ex1Test {
         double [] x_values = {1.2,-15,7};
         double [] y_values = {Ex1.f(po1,1.2),Ex1.f(po1,-15),Ex1.f(po1,7)};
         double [] actual_one = Ex1.PolynomFromPoints(x_values,y_values);
-        assertEquals(po1.length,actual_one.length);
-        for(int i=0;i<po1.length;i++){
-            assertEquals(po1[i],actual_one[i],Ex1.EPS);
-        }
+        assertArrayEquals(po1,actual_one,Ex1.EPS);
 
         double [] y_values_two = {Ex1.f(po2,1.2),Ex1.f(po2,-15),Ex1.f(po2,7)};
         double [] actual_two = Ex1.PolynomFromPoints(x_values,y_values_two);
-        assertEquals(po2.length,actual_two.length);
-        for(int i=0;i<po2.length;i++){
-            assertEquals(po2[i],actual_two[i],Ex1.EPS);
-        }
+        assertArrayEquals(po2,actual_two,Ex1.EPS);
+
+        double [] y_values_three = {2,2,2};
+        double [] x_values_three = {3,4,5,};
+        double [] actual_three = Ex1.PolynomFromPoints(x_values_three,y_values_three);
+        double [] expected_three = {2};
+        assertArrayEquals(expected_three,actual_three,Ex1.EPS);
+
+        double [] x_values_four = {Ex1.EPS,0.0000000001,0.000000007};
+        double [] y_values_four = {Ex1.f(po1,Ex1.EPS),Ex1.f(po1,0.0000000001),Ex1.f(po1,0.000000007)};
+        double [] actual_four = Ex1.PolynomFromPoints(x_values_four,y_values_four);
+        assertArrayEquals(po1,actual_four,Ex1.EPS);
+
+
     }
 
 

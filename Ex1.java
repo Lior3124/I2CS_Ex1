@@ -60,6 +60,37 @@ public class Ex1 {
 	 * @param xx - an array of doubles representing the x values of the points
 	 * @param yy -an array of doubles representing the y values of the points
 	 * @return an array of doubles representing the coefficients of the polynom.
+     *
+     * The function takes two arrays of point, one array of x values and another array of y values,together representing
+     * 2 to 3 points.
+     * then the function finds the polynomial that goes through all the points and returns the polynomial in an array representation
+     *
+     * ===Pseudocode===
+     * 1. input                                                             // the function takes as an input 2 double arrays, the arrays need to be equal and their length should be smaller than 4 and bigger than 1 (cannot be null)
+     * 2. double [] ans = null;                                             // ans equals null
+     * 3. int lx = xx.length;                                               // lx equals the length of the array xx
+     * 4. int ly = yy.length;                                               // ly equals the length of the array yy
+     * 5. if(xx!=null && yy!=null && lx==ly && lx>1 && lx<4)                // checks if the input is correct
+     * 6.   double A =0.0                                                   // state a new double variable A, equals 0
+     * 7.   double B = 0.0                                                  // state a new double variable B, equals 0
+     * 8.   double C = 0.0                                                  // state a new double variable C, equals 0
+     * 9.   if(lx == 2)                                                     // if lx equals 2 then:
+     * 10.       B = (yy[0]-yy[1])/(xx[0]-xx[1]);                           // B equals (y1-y2)/(x1-x2)
+     * 11.       C = yy[0]-B*xx[0];                                         // C equals y1-*Bx1
+     * 12.  else                                                            //else (if lx doesn't equal 2)
+     * 13.       double x1 = xx[0], x2 = xx[1], x3 = xx[2];                 // define x1 to be xx[0] and the on with all the x values in xx
+     * 14.       double y1 = yy[0], y2 = yy[1], y3 = yy[2];                 // define y1 to be y[0] and the on with all the y values in yy
+     * 15.       double denom = (x1 - x2) * (x1 - x3) * (x2 - x3);          //calculate the denom
+     * 16.       A = x3(y2 - y1) + x2(y1 - y3) + x1 (y3 - y2)/denom         // A equals calculations based on the link given above
+     * 17.       B = x3^2(y1 - y2) + x2^2(y3 - y1) + x1^2(y2 - y3)/denom    // B equals calculations based on the link given above
+     * 18.       C = x2x3(x2-x3)y1 + x3x1(x3-x1)y2 + x1x2(x1-x2)y3/denom    // C equals calculations based on the link given above
+     * 19.       if(A<EPS && B<EPS)                                         // if A and B are really small
+     * 20.          ans = new double[]{C};                                  // ans equals an array of doubles containing C
+     * 21.       else if(A<EPS)                                             // if A is really small
+     * 22.          ans = new double[]{C,B};                                // ans equals an array of doubles containing C,B
+     * 23.       else                                                       // else(if no one is really small)
+     * 24.          ans = new double[]{C,B,A};                              // ans equals an array of doubles containing C,B,A
+     * 25. return ans                                                       // return ans
 	 */
 	public static double[] PolynomFromPoints(double[] xx, double[] yy) {
 		double [] ans = null;
@@ -71,28 +102,22 @@ public class Ex1 {
             double B = 0.0;
             double C = 0.0;
             if(lx == 2){
-                A =0.0;
-                B = (xx[0]-xx[1])/(yy[0]-yy[1]);
+                B = (yy[0]-yy[1])/(xx[0]-xx[1]);
                 C = yy[0]-B*xx[0];
             }else {
                 double x1 = xx[0], x2 = xx[1], x3 = xx[2];
                 double y1 = yy[0], y2 = yy[1], y3 = yy[2];
-
                 double denom = (x1 - x2) * (x1 - x3) * (x2 - x3);
-
-                if (Math.abs(denom) > Math.pow(10, 12) || Math.abs(denom) < Math.pow(10, -8)) {
-                    A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2));
-                    B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3));
-                    C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3);
-                    ans = new double[]{C ,B};
-                } else {
-                    A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom;
-                    B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3)) / denom;
-                    C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom;
-                    ans = new double[]{C ,B ,A};
+                A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom;
+                B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3)) / denom;
+                C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom;
+                if(A<EPS && B<EPS){
+                    ans = new double[]{C};
                 }
-                if(A<EPS){
-                    ans = new double[]{C ,B};
+                else if(A<EPS){
+                    ans = new double[]{C,B};
+                }else{
+                    ans = new double[]{C,B,A};
                 }
             }
 		///////////////////*/
