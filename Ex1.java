@@ -176,6 +176,34 @@ public class Ex1 {
 	 * For example the array {2,0,3.1,-1.2} will be presented as the following String  "-1.2x^3 +3.1x^2 +2.0"
 	 * @param poly the polynomial function represented as an array of doubles
 	 * @return String representing the polynomial function:
+     *
+     * The function is given an array of doubles that represents a polynomial function
+     * and returns a string that represents the polynomial function
+     *
+     * ====pseudocode====
+     * 1.input                                                                  //the function input is an array of doubles
+     * 2.ans = "";                                                              //ans is an empty string
+     * 3.int count = poly.length-1;                                             //count equals the length of the array -1
+     * 4.if(poly.length==0)                                                     //if the length of the array equals 0
+     * 5.   ans="0";                                                            //ans equals "0"
+     * 6.else                                                                   //else(if the length of the array isn't zero)
+     * 7.   for(int i=0;i<poly.length;i++)                                      // loop while i is lower then poly length, each loop complete increment i by 1
+     * 8.       if(poly[count-i] != 0)                                          // if the array at index count-i doesn't equal zero
+     * 9.           if(count-i==1)                                              // if count-i equals 1
+     * 10.              if(i != 0 && poly[count-i]>0)                           // if i isn't zero and the array at index count-i is bigger then one
+     * 11.                  ans = ans + ("+")                                   // add to ans "+"
+     * 12.              ans = ans + (poly[count-i] + "x ")                      // add to ans the value of the array at index count-i and "x" after
+     * 13.          else if(i==0)                                               //else if i equals 0
+     * 14               ans = ans + (poly[count-i] + "x^" + (count-i) + " ")    // add to ans x^count-i with a space at the end
+     * 15.          else if(count-i == 0)                                       // else if count -i equals zero
+     * 16.              if(poly[count-i]>0)                                     // if the value of the array at index count-i is bigger the zero
+     * 17.                   ans = ans + ("+")                                  //add to ans "+"
+     * 18.               ans = ans +(poly[count-i])                             //add to ans value of the array at index count-i
+     * 19.          else                                                        //else
+     * 20.              if(poly[poly.length-i-1]>0)                             //if value of the array at index count-i-1 is bigger then zero
+     * 21.                  ans = ans + ("+")                                   // add to ans "+"
+     * 22.              ans = ans + (poly[count-i] + "x^" + (count-i) + " ")    // add to ans value of the array at index count-i and x^count-i with a space at the end
+     * 23.return ans                                                            // return ans
 	 */
 	public static String poly(double[] poly) {
 		String ans = "";
