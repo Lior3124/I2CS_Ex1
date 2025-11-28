@@ -177,18 +177,24 @@ public class Ex1 {
 	public static double sameValue(double[] p1, double[] p2, double x1, double x2, double eps) {
 		double ans = x1;
         /** add you code below*/
-        boolean found = false;
-        double x = (x1 + x2) / 2;
-        double fx1 = f(p1, x);
-        double fx2 = f(p2, x);
-        if (Math.abs(fx1 - fx2) < eps) {
-            ans = x;
-            found = true;
-        }
-        else if ((fx1 - fx2) * (f(p1, x1) - f(p2, x1)) > 0) {
-            return sameValue(p1, p2, x, x2, eps);
-        } else {
-            return sameValue(p1, p2, x1, x, eps);
+
+        double base_one = (f(p1, x1) - f(p2, x1));
+        double base_two = (f(p1, x2) - f(p2, x2));
+        if(base_one * base_two < 0) {
+            boolean found = false;
+            double x = (x1 + x2) / 2;
+            double fx1 = f(p1, x);
+            double fx2 = f(p2, x);
+            if (Math.abs(fx1 - fx2) < eps) {
+                ans = x;
+                found = true;
+            } else if ((fx1 - fx2) * (f(p1, x1) - f(p2, x1)) > 0) {
+                return sameValue(p1, p2, x, x2, eps);
+            } else {
+                return sameValue(p1, p2, x1, x, eps);
+            }
+        }else{
+            throw new IllegalArgumentException("the polynomials don't have an intersection point");
         }
          ///////////////////
 		return ans;

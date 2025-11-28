@@ -63,6 +63,8 @@ class Ex1Test {
         assertEquals(expected_three, actual_three,"You have a problem with poly func");
         assertEquals(expected_four, actual_four,"You have a problem with poly func");
     }
+
+
     @Test
     /**
      * Tests The convertion and calculation of 3 or 2 point into a polynom
@@ -122,6 +124,8 @@ class Ex1Test {
 		assertEquals(fx1, 4, Ex1.EPS);
 		assertEquals(fx2, 6, Ex1.EPS);
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1(x) + p2(x) == (p1+p2)(x)
@@ -134,6 +138,8 @@ class Ex1Test {
 		double f12x = Ex1.f(po12, x);
 		assertEquals(f1x + f2x, f12x, Ex1.EPS);
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1+p2+ (-1*p2) == p1
@@ -145,6 +151,8 @@ class Ex1Test {
 		double[] p1 = Ex1.add(p12, pp2);
 		assertTrue(Ex1.equals(p1, po1));
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1+p2 == p2+p1
@@ -154,6 +162,8 @@ class Ex1Test {
 		double[] p21 = Ex1.add(po2, po1);
 		assertTrue(Ex1.equals(p12, p21));
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1+0 == p1
@@ -162,6 +172,8 @@ class Ex1Test {
 		double[] p1 = Ex1.add(po1, Ex1.ZERO);
 		assertTrue(Ex1.equals(p1, po1));
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1*0 == 0
@@ -170,6 +182,8 @@ class Ex1Test {
 		double[] p1 = Ex1.mul(po1, Ex1.ZERO);
 		assertTrue(Ex1.equals(p1, Ex1.ZERO));
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1*p2 == p2*p1
@@ -179,6 +193,8 @@ class Ex1Test {
 		double[] p21 = Ex1.mul(po2, po1);
 		assertTrue(Ex1.equals(p12, p21));
 	}
+
+
 	@Test
 	/**
 	 * Tests that p1(x) * p2(x) = (p1*p2)(x),
@@ -194,6 +210,8 @@ class Ex1Test {
 			assertEquals(f12x, f1x*f2x, Ex1.EPS);
 		}
 	}
+
+
 	@Test
 	/**
 	 * Tests a simple derivative examples - till ZERO.
@@ -209,6 +227,8 @@ class Ex1Test {
 		assertTrue(Ex1.equals(Ex1.ZERO, dp3));
 		assertTrue(Ex1.equals(dp4, dp3));
 	}
+
+
 	@Test
 	/** 
 	 * Tests the parsing of a polynom in a String like form.
@@ -225,6 +245,8 @@ class Ex1Test {
 		if(!isSame2) {fail();}
 		assertEquals(sp, Ex1.poly(p1));
 	}
+
+
 	@Test
 	/**
 	 * Tests the equality of pairs of arrays.
@@ -241,7 +263,26 @@ class Ex1Test {
 		}
 	}
 
-	@Test
+
+    @Test
+    /**
+     * Test when two polynomial have an intersection point
+     */
+    public void testSameValue() {
+        double actual_one = Ex1.sameValue(po1,po2,-5.0,-2.0,Ex1.EPS);
+        double expected_one = -2.61398; // calculated beforehand
+
+        double actual_two = Ex1.sameValue(P1,po2,0,4,Ex1.EPS);
+        double expected_two = 3.11852;
+
+        assertEquals(expected_one, actual_one,Ex1.EPS);
+        assertEquals(expected_two, actual_two,Ex1.EPS);
+
+
+    }
+
+
+    @Test
 	/**
 	 * Tests is the sameValue function is symmetric.
 	 */
@@ -251,7 +292,18 @@ class Ex1Test {
 		double rs2 = Ex1.sameValue(po2,po1, x1, x2, Ex1.EPS);
 		assertEquals(rs1,rs2, Ex1.EPS);
 	}
-	@Test
+
+
+    @Test
+    /**
+     * Tests sameValue if there is no intersection point
+     */
+    public void testSameValue3(){
+        assertThrows(IllegalArgumentException.class, () -> Ex1.sameValue(P1,po2,0,2,Ex1.EPS));
+    }
+
+
+    @Test
 	/**
 	 * Test the area function - it should be symmetric.
 	 */
@@ -261,6 +313,8 @@ class Ex1Test {
 		double a2 = Ex1.area(po2, po1, x1, x2, 100);
 		assertEquals(a1,a2, Ex1.EPS);
 }
+
+
 	@Test
 	/**
 	 * Test the area f1(x)=0, f2(x)=x;
@@ -280,6 +334,8 @@ class Ex1Test {
 		assertEquals(a3,area, Ex1.EPS);
 		assertEquals(a100,area, Ex1.EPS);
 	}
+
+
 	@Test
 	/**
 	 * Test the area function.
