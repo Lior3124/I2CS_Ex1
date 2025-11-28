@@ -492,6 +492,33 @@ public class Ex1 {
 	 * @param p1 - an array of doubles representing a polynomial
 	 * @param p2 - an array of doubles representing a polynomial
 	 * @return - an array of doubles representing the sum of the two polynomials given
+     *
+     * The function get two arrays of doubles representing polynomial functions,
+     * and returns the polynomial function equal to the sum of them
+     *
+     * ====pseudocode====
+     * 1.input                                              //the function gets an input of two double arrays
+     * 2.double [] ans = ZERO;                              //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
+     * 3.if(p1.length !=0 || p2.length !=0)                 //if the length of p1 or the length of p2 aren't equal to zero
+     * 4.   double[] answer                                 //declare a variable answer that is an array of doubles
+     * 5.   if(p1.length == p2.length)                      //if the length of p1 and p2 are equal
+     * 6.       answer  = new double[p1.length]             //set the length of answer to the length of p1
+     * 7.       for(int i=0;i<answer.length;i++)            //loop while i is lower then the length of answer, each loop increment the value of i by 1
+     * 8.           answer[i] = p1[i] + p2[i];              //answer at index i is equal to p1 at the index i plus p2 at the index of i
+     * 9.   else if(p1.length > p2.length)                  //else if the length of p1 is bigger than length of p2
+     * 10.      answer  = new double[p1.length]             //set the length of answer to the length of p1
+     * 11.      for(int i=0;i<p2.length;i++)                //loop while i is lower than the length of p2 and after each loop increment the value of i by 1
+     * 12.          answer[i] = p1[i] + p2[i]               //answer at index i is equal to p1 at the index i plus p2 at the index of i
+     * 13.      for(int i=p2.length;i<p1.length;i++)        //loop while i is lower than the length of p1 , increment the value of i by 1 after each loop, i start equal to the length of p2
+     * 14.          answer[i] = p1[i]                       //answer at index i is equal to the value of p1 at index i
+     * 15.  else                                            //else (the length of p2 is bigger than the length of p1)
+     * 16.      answer  = new double[p2.length]             //set the length of answer to the length of p2
+     * 17.      for(int i=0;i<p1.length;i++)                //loop while i is lower than the length of p1 and after each loop increment the value of i by 1
+     * 18.          answer[i] = p1[i] + p2[i]               //answer at index i is equal to p1 at the index i plus p2 at the index of i
+     * 19.      for(int i=p1.length;i<p2.length;i++)        //loop while i is lower than the length of p2 , increment the value of i by 1 after each loop, i start equal to the length of p1
+     * 20.          answer[i] = p2[i]                       //answer at index i is equal to the value of p1 at index i
+     * 21.  ans = answer                                    //ans equals answer
+     * 22.return ans                                        //return ans
 	 */
 	public static double[] add(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
