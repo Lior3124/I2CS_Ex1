@@ -561,6 +561,25 @@ public class Ex1 {
 	 * @param p1 - an array of doubles representing a polynomial
 	 * @param p2 - an array of doubles representing a polynomial
 	 * @return - an array of doubles representing the multiplication of two polynomials
+     *
+     * The function gets two arrays of doubles representing polynomials,
+     * and returns an array of doubles representing the polynomial that is the multiplication of the two polynomials
+     *
+     * ====pseudocode====
+     * 1.input                                      //the function get an input, two arrays of doubles
+     * 2.double [] ans = ZERO;                      //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
+     * 3.if(p1.length !=0 && p2.length !=0)         //if the length p1 and the length of p2 aren't equal to zero
+     * 4.   sum_len = p1.length+p2.length           //sum_len is equal to the length of p1 plus the length p2
+     * 5.   double []  answer                       //declare a variable answer, an array of doubles
+     * 6.   if(p1.length<3 || p2.length<3)          //if the length of p1 or the length of p2 are less than 3
+     * 7.       answer  = new double[sum_len-1]     //set the length of answer to be sum_len-1
+     * 8.   else                                    //else(if the length of p1 or p2 is higher than 3)
+     * 9.       answer = new double[sum_len - 2]    //set the length of answer to be sum_len-2
+     * 10.  for(int i=0;i<p1.length;i++)            //loop while i is lower than the length of p1, after each loop increment i by 1
+     * 11.      for(int j=0;j<p2.length;j++)        //loop while j is lower than the length of p2, after each loop increment j by 1
+     * 12.          answer[i+j] += p1[i]*p2[j]      //answer at the index of i+j is equal to the value of p1 at the index of i multiplied by the value of p2 at the index of j
+     * 13.  ans = answer                            //ans is equal to answer
+     * 14.return ans                                //return ans
 	 */
 	public static double[] mul(double[] p1, double[] p2) {
 		double [] ans = ZERO;//
