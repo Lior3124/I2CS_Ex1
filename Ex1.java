@@ -438,6 +438,28 @@ public class Ex1 {
 	 * 
 	 * @param p - a String representing polynomial function.
 	 * @return - an array of doubles representing the polynomial function of the string
+     *
+     * The function gets a string that represent a polynomial
+     * and returns an array of doubles that represent the polynomial
+     *
+     * ====pseudocode====
+     * 1.input                                                                  //the function get as an input one string
+     * 2.double [] ans = ZERO;                                                  //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
+     * 3.if(!p.isEmpty())                                                       //if p isn't empty
+     * 4.   p = p.replace("x", "")                                              //replace every x in p with "", this now equals p
+     * 5.   p = p.replace("+", "")                                              //replace every + in p with "", this now equals p
+     * 6.   string [] func = p.split(" ");                                      //split p by every " " it has and each part store in func, an array of strings
+     * 7.   for (int i = 0; i < func.length; i++)                               //loop while i is lower than the length of func, and each time you loop incerement i by 1
+     * 8.       num = func[i].indexOf('^')                                      //num equals the index of ^ in the index i of func
+     * 9.       if (num != -1)                                                  //if num isn't equal -1
+     * 10.          func[i] = (func[i].substring(0, num))                       //func in the index i is now equal to itself from to start to num(to ^)
+     * 11.      else                                                            //else (if num equals -1, there is no ^)
+     * 12.          func[i] = func[i];                                          //func in the index i is equal to itself (doesn't actually do something used to make things clear)
+     * 13.  double[] new_ans = new double[func.length]                          //new_ans is an array of doubles with the same length as func
+     * 14.  for (int i = 0; i < func.length; i++)                               //loop while i is lower than the length of func, and each time you loop incerement i by 1
+     * 15.      new_ans[func.length - i - 1] = Double.parseDouble(func[i])      //new_ans in the index func length -i -1 is equal to the value in func at index i, but in double
+     * 16.  ans = new_ans                                                       //ans equals new_ans
+     * 17.return ans                                                            //return ans
 	 */
 	public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
