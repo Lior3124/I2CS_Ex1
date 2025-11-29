@@ -1,6 +1,8 @@
 package assignments.Ex1;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -287,6 +289,21 @@ class Ex1Test {
 		if(!isSame2) {fail();}
 		assertEquals(sp, Ex1.poly(p1));
 	}
+    @Test
+    /**
+     * Tests the parsing of a polynom in a String like form, but with invalid input
+     */
+    public void testFromString2() {
+        assertThrows(IllegalArgumentException.class, () -> Ex1.getPolynomFromString("a"));
+        assertThrows(IllegalArgumentException.class, () -> Ex1.getPolynomFromString("2x^f"));
+    }
+
+    @Test
+    public void testFromString3() {
+        double [] expected_one = {0,0,1.0};
+        String p = "1.0x^2";
+        assertArrayEquals(expected_one, Ex1.getPolynomFromString(p));
+    }
 
 
 

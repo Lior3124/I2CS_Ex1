@@ -443,28 +443,92 @@ public class Ex1 {
      * and returns an array of doubles that represent the polynomial
      *
      * ====pseudocode====
-     * 1.input                                                                                  //the function get as an input one string
-     * 2.double [] ans = ZERO;                                                                  //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
-     * 3.if(!p.isEmpty())                                                                       //if p isn't empty
-     * 4.   p = p.replace("x", "")                                                              //replace every x in p with "", this now equals p
-     * 5.   p = p.replace("+", "")                                                              //replace every + in p with "", this now equals p
-     * 6.   string [] func = p.split(" ");                                                      //split p by every " " it has and each part store in func, an array of strings
-     * 7.   for (int i = 0; i < func.length; i++)                                               //loop while i is lower than the length of func, and each time you loop incerement i by 1
-     * 8.       num = func[i].indexOf('^')                                                      //num equals the index of ^ in the index i of func
-     * 9.       if (num != -1)                                                                  //if num isn't equal -1
-     * 10.          func[i] = (func[i].substring(0, num))                                       //func in the index i is now equal to itself from to start to num(to ^)
-     * 11.      else                                                                            //else (if num equals -1, there is no ^)
-     * 12.          func[i] = func[i];                                                          //func in the index i is equal to itself (doesn't actually do something used to make things clear)
-     * 13.  double[] new_ans = new double[func.length]                                          //new_ans is an array of doubles with the same length as func
-     * 14.  for (int i = 0; i < func.length; i++)                                               //loop while i is lower than the length of func, and each time you loop incerement i by 1
-     * 15.      new_ans[func.length - i - 1] = Double.parseDouble(func[i])                      //new_ans in the index func length -i -1 is equal to the value in func at index i, but in double
-     * 16.  ans = new_ans                                                                       //ans equals new_ans
-     * 17.return ans                                                                            //return ans
+     * 1.input                                                                              //the function get as an input one string
+     * 2.double [] ans = ZERO                                                               //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
+     * 3.if(!p.isEmpty())                                                                   //if p isn't empty
+     * 4.   String all = "0123456789^+-.x "                                                 //all is equal to all the possible values that can be in the string(used for checking valid input)
+     * 5.   String start = "0123456789-x"                                                   //start is equal to all the possible values that can be in the first letter of the string(used for checking valid input)
+     * 6.   String last = "0123456789x"                                                     //last is equal to all the possible values that can be in the last value of the string(used for checking valid input)
+     * 7.   int falses = 0                                                                  //falses is equal to zero
+     * 8.   for(int i =0; i < p.length();i++)                                               //loop while i is less the length of p, after each loop increment the value of i by 1
+     * 9.       char character = p.charAt(i)                                                //character is the character at p on index i
+     * 10.      if(i==0)                                                                    // if i is equal to zero
+     * 11.           if(start.indexOf(character) == -1)                                     //if character isn't found in start
+     * 12.              falses = falses+1;                                                  //increment falses by 1
+     * 13.      else if(i==p.length()-1)                                                    //else if i is equal the length of p minus 1
+     * 14.            if(last.indexOf(character) == -1)                                     //if character isn't found in  last
+     * 15.              falses = falses+1;                                                  //increment falses by 1
+     * 16.      else                                                                        //else
+     * 17.           if(all.indexOf(character) == -1)                                       //if character isn't found in all
+     * 18.              falses = falses+1;                                                  //increment the value of falses by 1
+     * 19.      if(falses !=0)                                                              //if falses isn't equal zero
+     * 20.           throw new IllegalArgumentException("invalid input")                    //throw an illegal argument exception
+     * 21.   int degree = 0                                                                 // degree is equal to 1
+     * 22.   int index = p.indexOf("^")                                                     // index is equal to the index of ^ in p(find the first one)
+     * 23.   if(index == -1)                                                                //if ^ isn't found in p
+     * 24.      index = p.indexOf("x")                                                      //index is equal the index of x in p
+     * 25.      if(index == -1)                                                             //if x isn't found in p
+     * 26.          degree = 0                                                              //degree equal 0
+     * 27.      degree = 1                                                                  //degree equal 1
+     * 28.   degree = Character.getNumericValue(p.charAt(index+1))                          //degree is equal int of the index after index
+     * 29.   p = p.replace("x", "")                                                         //replace x with "" in p
+     * 30.   p = p.replace("+", "")                                                         //replace + with "" in p
+     * 31.   String[] func = p.split(" ")                                                   //func is an array of string, each value in the array is what before " ", continues to the next each time
+     * 32.   for (int i = 0; i < func.length; i++)                                          //loop while i is less than the length of func, increment the value of i by 1
+     * 33.             int num = func[i].indexOf('^')                                       //num is equal to the of ^ in func
+     * 34.            if (num != -1)                                                        //if num isn't equal -1
+     * 35.                  func[i] = (func[i].substring(0, num))                           //func in the index i is equal to itself but from the start until ^ without the ^
+     * 36.             else                                                                 //else (if num is equal -1, no ^ in func at the index of i)
+     * 37.                 func[i] = func[i]                                                //func is equal itself(i wrote this just for the code to be more understandable)
+     * 38.         double[] new_ans = new double[degree+1]                                  //new_ans is an array of doubles with the length of degree +1
+     * 39.         if(func.length < new_ans.length)                                         //if the length of func is lower than the length of new_ans
+     * 40.             for (int i = 0; i < func.length; i++)                                //loop while i is lower than the length of func, increment the value of i by 1 after each loop
+     * 41.                 new_ans[new_ans.length - i - 1] = Double.parseDouble(func[i])    //new_ans the index of it's length -i-1 is equal to the double value of func at index i
+     * 42.        else                                                                      //else(if the length of func isn't lower than the length of new_ans)
+     * 43.             for (int i = 0; i < func.length; i++)                                //loop while i is lower the func length, after each loop increment the value of i by 1
+     * 44.                 new_ans[func.length - i - 1] = Double.parseDouble(func[i])       //new_ans the index of it's length -i-1 is equal to the double value of func at index i
+     * 45.         ans = new_ans                                                            //ans equals new ans
+     * 46.return ans                                                                        //return ans
 	 */
-	public static double[] getPolynomFromString(String p) {
+
+    public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
         /** add you code below*/
         if(!p.isEmpty()) {
+            String all = "0123456789^+-.x ";
+            String start = "0123456789-x";
+            String last = "0123456789x";
+            int falses = 0;
+            for(int i =0; i < p.length();i++){
+                char character = p.charAt(i);
+                if(i==0){
+                    if(start.indexOf(character) == -1){
+                        falses = falses+1;
+                    }
+                }else if(i==p.length()-1){
+                    if(last.indexOf(character) == -1){
+                        falses = falses+1;
+                    }
+                }else{
+                    if(all.indexOf(character) == -1){
+                        falses = falses+1;
+                    }
+                }
+                if(falses !=0){
+                    throw new IllegalArgumentException("invalid input");
+                }
+            }
+            int degree = 0;
+            int index = p.indexOf("^");
+            if(index == -1) {
+                index = p.indexOf("x");
+                if(index == -1) {
+                    degree = 0;
+                }
+                degree = 1;
+            }
+            degree = Character.getNumericValue(p.charAt(index+1));
+
             p = p.replace("x", "");
             p = p.replace("+", "");
             String[] func = p.split(" ");
@@ -476,15 +540,22 @@ public class Ex1 {
                     func[i] = func[i];
                 }
             }
-            double[] new_ans = new double[func.length];
-            for (int i = 0; i < func.length; i++) {
-                new_ans[func.length - i - 1] = Double.parseDouble(func[i]);
+            double[] new_ans = new double[degree+1];
+            if(func.length < new_ans.length) {
+                for (int i = 0; i < func.length; i++) {
+                    new_ans[new_ans.length - i - 1] = Double.parseDouble(func[i]);
+                }
+            }else {
+                for (int i = 0; i < func.length; i++) {
+                    new_ans[func.length - i - 1] = Double.parseDouble(func[i]);
+                }
             }
             ans = new_ans;
         }
          ///////////////////
 		return ans;
 	}
+
 
 
 	/**
