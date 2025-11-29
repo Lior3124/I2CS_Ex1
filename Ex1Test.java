@@ -98,6 +98,20 @@ class Ex1Test {
 
     @Test
     /**
+     * Tests The convertion and calculation of 3 or 2 point into a polynom, but the input is invalid
+     */
+    public void testPolynomFromPoints2(){
+        double[] y = {1,2,3};
+        double[] y2 ={1,2};
+        double[] x1 = {1,1,1};
+        double[] x2 = {1,1};
+        assertThrows(IllegalArgumentException.class, () -> Ex1.PolynomFromPoints(x1,y));
+        assertThrows(IllegalArgumentException.class, () -> Ex1.PolynomFromPoints(x2,y2));
+        assertEquals(null,Ex1.PolynomFromPoints(x1,y2));
+    }
+
+    @Test
+    /**
      * Tests the length of a function between two points
      */
     void testlength() {

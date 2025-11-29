@@ -75,12 +75,14 @@ public class Ex1 {
      * 7.   double B = 0.0                                                  // state a new double variable B, equals 0
      * 8.   double C = 0.0                                                  // state a new double variable C, equals 0
      * 9.   if(lx == 2)                                                     // if lx equals 2 then:
+     *          if(xx[0]-xx[1] == 0){throw exception}                       // if xx[0]-xx[1] throw exception, can't divide by zero
      * 10.       B = (yy[0]-yy[1])/(xx[0]-xx[1]);                           // B equals (y1-y2)/(x1-x2)
      * 11.       C = yy[0]-B*xx[0];                                         // C equals y1-*Bx1
      * 12.  else                                                            //else (if lx doesn't equal 2)
      * 13.       double x1 = xx[0], x2 = xx[1], x3 = xx[2];                 // define x1 to be xx[0] and the on with all the x values in xx
      * 14.       double y1 = yy[0], y2 = yy[1], y3 = yy[2];                 // define y1 to be y[0] and the on with all the y values in yy
      * 15.       double denom = (x1 - x2) * (x1 - x3) * (x2 - x3);          //calculate the denom
+     *           if(denom == 0){throw exception}                            //if denom equals zero throw exception, can't divide by zero
      * 16.       A = x3(y2 - y1) + x2(y1 - y3) + x1 (y3 - y2)/denom         // A equals calculations based on the link given above
      * 17.       B = x3^2(y1 - y2) + x2^2(y3 - y1) + x1^2(y2 - y3)/denom    // B equals calculations based on the link given above
      * 18.       C = x2x3(x2-x3)y1 + x3x1(x3-x1)y2 + x1x2(x1-x2)y3/denom    // C equals calculations based on the link given above
@@ -102,12 +104,18 @@ public class Ex1 {
             double B = 0.0;
             double C = 0.0;
             if(lx == 2){
+                if(xx[0]-xx[1] == 0){
+                    throw new IllegalArgumentException("invalid input");
+                }
                 B = (yy[0]-yy[1])/(xx[0]-xx[1]);
                 C = yy[0]-B*xx[0];
             }else {
                 double x1 = xx[0], x2 = xx[1], x3 = xx[2];
                 double y1 = yy[0], y2 = yy[1], y3 = yy[2];
                 double denom = (x1 - x2) * (x1 - x3) * (x2 - x3);
+                if(denom == 0){
+                    throw new IllegalArgumentException("invalid input");
+                }
                 A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom;
                 B = (Math.pow(x3, 2) * (y1 - y2) + Math.pow(x2, 2) * (y3 - y1) + Math.pow(x1, 2) * (y2 - y3)) / denom;
                 C = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom;
