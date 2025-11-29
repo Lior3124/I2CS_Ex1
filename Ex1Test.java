@@ -288,6 +288,20 @@ class Ex1Test {
 		assertEquals(sp, Ex1.poly(p1));
 	}
 
+    @Test
+    /**
+     * Test fromString if invalid input is entered
+     */
+    public void testFromString2() {
+        String p = "x^2+a";
+        String p1 = "+2x";
+        String p2 = "x^2+";
+
+        assertThrows(IllegalArgumentException.class, () -> Ex1.getPolynomFromString(p));
+        assertThrows(IllegalArgumentException.class, () -> Ex1.getPolynomFromString(p1));
+        assertThrows(IllegalArgumentException.class, () -> Ex1.getPolynomFromString(p2));
+    }
+
 
 	@Test
 	/**
