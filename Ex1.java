@@ -160,6 +160,9 @@ public class Ex1 {
 	public static boolean equals(double[] p1, double[] p2) {
 		boolean ans = true;
         /** add you code below*/
+        if(p1 == null || p2 == null){
+            throw new IllegalArgumentException("invalid input");
+        }
         if(p1.length !=0 && p2.length != 0) {
             int max = Math.max(p1.length, p2.length);
 
@@ -176,7 +179,6 @@ public class Ex1 {
         ///////////////////
 		return ans;
 	}
-
 
 
 	/** 
@@ -498,7 +500,6 @@ public class Ex1 {
      * 45.         ans = new_ans                                                            //ans equals new ans
      * 46.return ans                                                                        //return ans
 	 */
-
     public static double[] getPolynomFromString(String p) {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
         /** add you code below*/
@@ -563,7 +564,6 @@ public class Ex1 {
          ///////////////////
 		return ans;
 	}
-
 
 
 	/**
