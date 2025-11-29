@@ -446,12 +446,6 @@ public class Ex1 {
      * 1.input                                                                                  //the function get as an input one string
      * 2.double [] ans = ZERO;                                                                  //ans is an array of doubles the equals ZERO (The zero polynomial function is represented as an array with a single (0) entry)
      * 3.if(!p.isEmpty())                                                                       //if p isn't empty
-     *    if (!p.matches(".*[^0-9+\\-x^].*"))                                                   //check if p contains an invalid input  (anything other than x,0-9,+,-,^,.)
-     *      throw new IllegalArgumentException("Input contains invalid characters: ");          //throws an exception illegal argument
-     *    if(!Character.isDigit(p.charAt(0)) && p.charAt(0) != '-')                             //if the first letter of p is something other than a digit or -
-     *       throw new IllegalArgumentException("Input contains invalid characters: ");         //throws an exception illegal argument
-     *    if(!Character.isDigit(p.charAt(p.length()-1)) && p.charAt(p.length()-1) != '-')       //if the last letter of p is something other than a digit or x
-     *       throw new IllegalArgumentException("Input contains invalid characters: ");         //throws an exception illegal argument
      * 4.   p = p.replace("x", "")                                                              //replace every x in p with "", this now equals p
      * 5.   p = p.replace("+", "")                                                              //replace every + in p with "", this now equals p
      * 6.   string [] func = p.split(" ");                                                      //split p by every " " it has and each part store in func, an array of strings
@@ -471,15 +465,6 @@ public class Ex1 {
 		double [] ans = ZERO;//  -1.0x^2 +3.0x +2.0
         /** add you code below*/
         if(!p.isEmpty()) {
-            if (!p.matches(".*[^0-9+\\-x^].*")) {
-                throw new IllegalArgumentException("Input contains invalid characters: ");
-            }
-            if(!Character.isDigit(p.charAt(0)) && p.charAt(0) != '-') {
-                throw new IllegalArgumentException("Input contains invalid characters: ");
-            }
-            if(!Character.isDigit(p.charAt(p.length()-1)) && p.charAt(p.length()-1) != '-') {
-                throw new IllegalArgumentException("Input contains invalid characters: ");
-            }
             p = p.replace("x", "");
             p = p.replace("+", "");
             String[] func = p.split(" ");
