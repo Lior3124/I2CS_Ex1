@@ -160,7 +160,10 @@ public class Ex1 {
 	public static boolean equals(double[] p1, double[] p2) {
 		boolean ans = true;
         /** add you code below*/
-        if(p1 == null || p2 == null){
+        if(p1 == null && p2 == null){
+            return true;
+        }
+        else if(p1 == null || p2 == null){
             throw new IllegalArgumentException("invalid input");
         }
         if(p1.length !=0 && p2.length != 0) {

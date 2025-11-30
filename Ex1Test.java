@@ -352,6 +352,15 @@ class Ex1Test {
 
     @Test
     /**
+     * Test the equality of pairs of array, but when both are null
+     */
+    public void testEquals3(){
+        assertEquals(true, Ex1.equals(null,null));
+    }
+
+
+    @Test
+    /**
      * Test when two polynomial have an intersection point
      */
     public void testSameValue() {
