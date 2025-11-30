@@ -9,6 +9,7 @@ The assigment focuses on function over arrays that represent polynomials.
 
 For example: the array of doubles {-3, 0.61, 0.2} represent the polynomial 0.2x^2+0.61x-3
 
+and the array {0,0,1} represents the polynomial x^2.
 
 ## ***Files***
 The assigment comes with 3 related files, each has it's own purpose and Use
@@ -42,7 +43,7 @@ __9. getPolynomFromString -__ given a string that represents a polynomial return
 
 __10. add -__ computes the polynomial which is the sum of two polynomials
 
-__11. mul -__omputes the polynomial which is the multipication of two polynomials
+__11. mul -__ omputes the polynomial which is the multipication of two polynomials
 
 __12. derivative -__ computes the derivative of a polynomial fucntion
 
