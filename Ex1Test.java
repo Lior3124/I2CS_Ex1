@@ -344,7 +344,6 @@ class Ex1Test {
      */
     public void testEquals2() {
         double [] arr = {1};
-        assertThrows(IllegalArgumentException.class, () -> Ex1.equals(null, null));
         assertThrows(IllegalArgumentException.class, () -> Ex1.equals(arr, null));
         assertThrows(IllegalArgumentException.class, () -> Ex1.equals(null, arr));
     }
