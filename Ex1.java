@@ -64,6 +64,7 @@ public class Ex1 {
      * The function takes two arrays of point, one array of x values and another array of y values,together representing
      * 2 to 3 points.
      * then the function finds the polynomial that goes through all the points and returns the polynomial in an array representation
+     * it does it by using the solution above and it will also check that we don't divide by zero
      *
      * ===Pseudocode===
      * 1. input                                                             // the function takes as an input 2 double arrays, the arrays need to be equal and their length should be smaller than 4 and bigger than 1 (cannot be null)
@@ -140,7 +141,7 @@ public class Ex1 {
 	 * @param p2 second polynomial function
 	 * @return true if p1 represents the same polynomial function as p2.
      *
-     * The function take two double arrays and checks for n+1 values of x if both the polynomials represented by the arrays are equal(they have to be equal in all the x values)
+     * The function takes two double arrays and checks for n+1 values of x if both the polynomials represented by the arrays are equal(they have to be equal in all the x values)
      * The function randomizes the x values to make sure there isn't a coincidence
      *
      * ====pseudocode====
@@ -192,6 +193,8 @@ public class Ex1 {
      *
      * The function is given an array of doubles that represents a polynomial function
      * and returns a string that represents the polynomial function
+     * In order to return the string the function will create a string with every value of the array and add x^the index but if
+     * the index is 1 or zero it won't print the index and the x
      *
      * ====pseudocode====
      * 1.input                                                                  //the function input is an array of doubles
@@ -268,7 +271,8 @@ public class Ex1 {
      *
      * The function is given two double array representing polynomial functions and a two x values representing a range and
      * an eps value that determines when it is close enough.The function return the x value for which the two polynomial functions have an
-     * intersection point
+     * intersection point.
+     * to find an intersection point the function will look for when the absolute value of p1 - p2 is lower the eps.
      *
      * ====pseudocode====
      * 1.input                                                                          //the function takes as an input two double arrays and three doubles
@@ -326,7 +330,8 @@ public class Ex1 {
 	 * @return the length approximation of the function between f(x1) and f(x2).
      *
      * The function gets an array of doubles representing a polynomial, two doubles representing x values and an integer representing the number of segment that the length will be divided into.
-     * The function return the length of the polynomial within the given x values
+     * The function return the length of the polynomial within the given x values.
+     * the function will split the length into numberOfSegments and for each segment it wil do Pythagorean theorem and sum all the lengths
      *
      * ====pseudocode====
      * 1.input                                                                  // the functin takes an input of one array of doubls 2, 2 doubles and one integer
@@ -454,6 +459,8 @@ public class Ex1 {
      *
      * The function gets a string that represent a polynomial
      * and returns an array of doubles that represent the polynomial
+     * the function also checks for invalid values for example"xa" is invalid so the function will throw an exception illegal argument,
+     * if there aren't any problems with the input it will turn the given string into an array
      *
      * ====pseudocode====
      * 1.input                                                                              //the function get as an input one string
@@ -577,6 +584,8 @@ public class Ex1 {
      *
      * The function get two arrays of doubles representing polynomial functions,
      * and returns the polynomial function equal to the sum of them
+     * in order to add two polynoms you add the values together like we are used to,
+     * but in with the array there are some conditions(you can see teh if's and conditions in the pseudo code)
      *
      * ====pseudocode====
      * 1.input                                              //the function gets an input of two double arrays
@@ -646,6 +655,7 @@ public class Ex1 {
      *
      * The function gets two arrays of doubles representing polynomials,
      * and returns an array of doubles representing the polynomial that is the multiplication of the two polynomials
+     * it multiplies every number in one polynomial by the other polynomial and puts it in a new array(with some conditions to the length)
      *
      * ====pseudocode====
      * 1.input                                      //the function get an input, two arrays of doubles
@@ -693,6 +703,8 @@ public class Ex1 {
      *
      * The function gets an array of doubles representing a polynomial function
      * and return an array of doubles that represents the derivative of the polynomial
+     * it creates another array shorter by 1 index and puts every index of the original array in the new array at the same index - 1
+     * and also multiplies each value by its original i in order to calculate the derivative.
      *
      * ====pseudocode====
      * 1.input                                          //the function gets an input of one doubles array
