@@ -1,7 +1,6 @@
 
 # Intro2CS_Ex1 
-### ***Lior Lyubarsky - 216687863***
-Ex1 - Basic programming: static functions, arrays, and JUnit.
+### ***Ex1 - Basic programming: static functions, arrays, and JUnit.***
 
 This is assigment #1 at Ariel University, School of Computer Science, 2026.
 
